@@ -1,8 +1,6 @@
 package src.dto;
 
-import java.util.Date;
-
-public class RequestDto {
+public class Flight {
 
     private String date;
     private String time;
@@ -11,7 +9,7 @@ public class RequestDto {
     private String flightNo;
     private String remarks;
 
-    public RequestDto(String date, String time, String to, String airline, String flightNo, String remarks) {
+    public Flight(String date, String time, String to, String airline, String flightNo, String remarks) {
         this.date = date;
         this.time = time;
         this.to = to;
@@ -24,7 +22,7 @@ public class RequestDto {
         return date;
     }
 
-    public RequestDto setDate(String date) {
+    public Flight setDate(String date) {
         this.date = date;
         return this;
     }
@@ -33,7 +31,7 @@ public class RequestDto {
         return time;
     }
 
-    public RequestDto setTime(String time) {
+    public Flight setTime(String time) {
         this.time = time;
         return this;
     }
@@ -42,7 +40,7 @@ public class RequestDto {
         return to;
     }
 
-    public RequestDto setTo(String to) {
+    public Flight setTo(String to) {
         this.to = to;
         return this;
     }
@@ -51,7 +49,7 @@ public class RequestDto {
         return airline;
     }
 
-    public RequestDto setAirline(String airline) {
+    public Flight setAirline(String airline) {
         this.airline = airline;
         return this;
     }
@@ -60,7 +58,7 @@ public class RequestDto {
         return flightNo;
     }
 
-    public RequestDto setFlightNo(String flightNo) {
+    public Flight setFlightNo(String flightNo) {
         this.flightNo = flightNo;
         return this;
     }
@@ -69,7 +67,7 @@ public class RequestDto {
         return remarks;
     }
 
-    public RequestDto setRemarks(String remarks) {
+    public Flight setRemarks(String remarks) {
         this.remarks = remarks;
         return this;
     }
