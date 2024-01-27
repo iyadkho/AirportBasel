@@ -5,16 +5,16 @@ import src.dto.Flight;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class CSVAuslesen {
 
     private ArrayList<Flight> arrayList;
 
-    private String time;
-
-    public CSVAuslesen(String dateiPfad, String time) {
+    public CSVAuslesen(String dateiPfad) {
         parseData(dateiPfad);
-        getFlightTable(time);
     }
 
     public void parseData(String dateiPfad) {
@@ -32,16 +32,32 @@ public class CSVAuslesen {
                     Flight flight = new Flight(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
                     arrayList.add(flight);
                 }
-              count++;
+                count++;
             }
             this.arrayList = arrayList;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    };
+    }
+
+    ;
 
     public ArrayList<Flight> getFlightTable(String time) {
 
+        // Parse the time strings into LocalTime objects
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime timeMethode = LocalTime.parse(time, formatter);
+        ArrayList<Flight> arr = new ArrayList<>();
+        for (Flight flight : arrayList) {
+            LocalTime timeDatei = LocalTime.parse(flight.getTime(), formatter);
+            if (timeDatei.isAfter(timeMethode)) {
+                arr.add(flight);
+            }
+            if (arr.size() == 10) {
+                return arr;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Flight> getArrayList() {
